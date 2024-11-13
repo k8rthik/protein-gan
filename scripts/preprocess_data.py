@@ -1,5 +1,5 @@
-import Bio.PDB.PDBParser as PDBParser
 import numpy as np
+from Bio.PDB.PDBParser import PDBParser
 
 
 def calculate_dist_matrix(name, pdb_file):
