@@ -1,11 +1,13 @@
+import os
+
 import numpy as np
 from Bio.PDB.PDBParser import PDBParser
 
 
-def calculate_dist_matrix(name, pdb_file):
+def calculate_dist_matrix(pdb_file):
 
     parser = PDBParser(QUIET=True)
-    structure = parser.get_structure(name, pdb_file)
+    structure = parser.get_structure(pdb_file[-8:-4], pdb_file)
 
     alpha_carbons = []
     for model in structure.get_models():
@@ -23,11 +25,12 @@ def calculate_dist_matrix(name, pdb_file):
 
 
 if __name__ == "__main__":
-    name = "ubiquitin"
-    pdb_file = "./data/raw/1ubq.pdb"
+    path = "./data/raw/"
+    matrices = {
+        file[0:4]: calculate_dist_matrix(os.path.join(path, file))
+        for file in os.listdir(path)
+    }
 
-    distance_matrix = calculate_dist_matrix(name, pdb_file)
-
-    np.savetxt("data/processed/distance_matrix.csv", distance_matrix, delimiter=",")
-    print("Pairwise distance matrix: ")
-    print(distance_matrix)
+    for matrix in matrices:
+        print(matrices[matrix])
+        np.savetxt("data/processed/" + matrix + ".csv", matrices[matrix], delimiter=",")
