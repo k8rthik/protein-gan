@@ -36,9 +36,6 @@ python generate.py
 - `train.py`: Script to train the DCGAN model.
 - `generate.py`: Script to generate protein structures using the trained model.
 
-## Contributing
-
-Contributions are welcome! Please open an issue or submit a pull request.
 
 ## License
 
