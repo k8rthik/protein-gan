@@ -1,0 +1,77 @@
+{
+ "query": {
+  "type": "group",
+  "logical_operator": "and",
+  "nodes": [
+   {
+    "type": "terminal",
+    "service": "text",
+    "parameters": {
+     "attribute": "exptl.method",
+     "operator": "exact_match",
+     "value": "X-RAY DIFFRACTION"
+    }
+   },
+   {
+    "type": "terminal",
+    "service": "text",
+    "parameters": {
+     "attribute": "rcsb_entry_info.resolution_combined",
+     "operator": "less_or_equal",
+     "value": 2.0
+    }
+   },
+   {
+    "type": "terminal",
+    "service": "text",
+    "parameters": {
+     "attribute": "rcsb_entry_info.polymer_entity_count_protein",
+     "operator": "equals",
+     "value": 1
+    }
+   },
+   {
+    "type": "terminal",
+    "service": "text",
+    "parameters": {
+     "attribute": "rcsb_entry_info.selected_polymer_entity_types",
+     "operator": "exact_match",
+     "value": "Protein (only)"
+    }
+   },
+   {
+    "type": "terminal",
+    "service": "text",
+    "parameters": {
+     "attribute": "entity_poly.rcsb_sample_sequence_length",
+     "operator": "range",
+     "value": {
+      "from": 80,
+      "to": 400
+     }
+    }
+   }
+  ]
+ },
+ "return_type": "polymer_entity",
+ "request_options": {
+  "paginate": {
+   "start": 0,
+   "rows": 1000
+  },
+  "results_content_type": [
+   "experimental"
+  ],
+  "sort": [
+   {
+    "sort_by": "score",
+    "direction": "desc"
+   }
+  ],
+  "group_by": {
+   "aggregation_method": "sequence_identity",
+   "similarity_cutoff": 30
+  },
+  "group_by_return_type": "representatives"
+ }
+}
