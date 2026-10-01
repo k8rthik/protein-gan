@@ -235,6 +235,8 @@ def _run_evaluate(args: argparse.Namespace) -> int:
     )
     print(f"wrote {paths.json_path}")
     print(f"wrote {paths.markdown_path}")
+    if paths.preview_path is not None:
+        print(f"wrote {paths.preview_path} (top row real, bottom row generated)")
     print()
     print(paths.markdown_path.read_text())
     return EXIT_OK
