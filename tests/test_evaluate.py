@@ -172,3 +172,13 @@ class TestEvaluateToFiles:
         out = tmp_path / "nested" / "reports"
         evaluate_to_files(samples, processed, split="val", out_dir=out, embed_count=2)
         assert out.is_dir()
+
+
+class TestPreviewInReport:
+    def test_preview_png_is_written(self, processed, samples, tmp_path):
+        paths = evaluate_to_files(
+            samples, processed, split="val", out_dir=tmp_path / "reports", embed_count=2
+        )
+        assert paths.preview_path is not None
+        assert paths.preview_path.name == "samples.png"
+        assert paths.preview_path.read_bytes().startswith(b"\x89PNG\r\n\x1a\n")

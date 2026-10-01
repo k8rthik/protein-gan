@@ -25,9 +25,13 @@ from folduzz.metrics.embedding import embedding_report
 from folduzz.metrics.nearest import nearest_neighbour_report
 from folduzz.metrics.stats import distribution_report
 from folduzz.metrics.validity import validity_report
+from folduzz.preview import write_comparison
 
 JSON_NAME = "evaluation.json"
 MARKDOWN_NAME = "evaluation.md"
+PREVIEW_NAME = "samples.png"
+#: Matrices shown per row in the preview image.
+PREVIEW_PER_ROW = 6
 RAW_SOURCE = "dcgan_raw"
 SYMMETRIZED_SOURCE = "dcgan_symmetrized"
 REAL_SOURCE = "real_held_out"
@@ -37,6 +41,7 @@ REAL_SOURCE = "real_held_out"
 class ReportPaths:
     json_path: Path
     markdown_path: Path
+    preview_path: Path | None = None
 
 
 def _symmetrized_stack(matrices: np.ndarray) -> np.ndarray:
@@ -219,7 +224,7 @@ def evaluate_to_files(
     seed: int = 0,
     embed_count: int = 128,
 ) -> ReportPaths:
-    """Run the evaluation and write `evaluation.json` + `evaluation.md`."""
+    """Run the evaluation and write evaluation.json, evaluation.md, samples.png."""
     results = evaluate(
         samples_path=samples_path,
         data_dir=data_dir,
@@ -233,4 +238,13 @@ def evaluate_to_files(
     markdown_path = directory / MARKDOWN_NAME
     json_path.write_text(json.dumps(results, indent=2) + "\n")
     markdown_path.write_text(to_markdown(results))
-    return ReportPaths(json_path=json_path, markdown_path=markdown_path)
+
+    preview_path = write_comparison(
+        directory / PREVIEW_NAME,
+        load_split(data_dir, split),
+        load_samples(Path(samples_path)),
+        per_row=PREVIEW_PER_ROW,
+    )
+    return ReportPaths(
+        json_path=json_path, markdown_path=markdown_path, preview_path=preview_path
+    )
