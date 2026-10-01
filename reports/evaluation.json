@@ -1,0 +1,508 @@
+{
+  "samples": "data/generated/epoch_00120.npy",
+  "data_dir": "data/processed",
+  "split": "val",
+  "max_distance_angstrom": 50.0,
+  "matrix_size": 64,
+  "real_count": 1043,
+  "generated_count": 512,
+  "seed": 0,
+  "embed_count": 512,
+  "contact_threshold_angstrom": 8.0,
+  "triangle_tolerance_angstrom": 0.05,
+  "nn_reference_split": "train",
+  "sources": {
+    "dcgan_raw": {
+      "count": 512,
+      "validity": {
+        "symmetry": {
+          "mean_abs_asymmetry_angstrom": 2.0135091472681097,
+          "max_abs_asymmetry_angstrom": 39.2095422744751,
+          "relative_asymmetry": 0.1141268626602093
+        },
+        "diagonal": {
+          "mean_abs_diagonal_angstrom": 0.45941710361694277,
+          "max_abs_diagonal_angstrom": 2.6347861289978027
+        },
+        "triangle": {
+          "violation_rate": 0.02536296844482422,
+          "mean_excess_angstrom": 2.4388292724683023,
+          "max_excess_angstrom": 22.186893463134766,
+          "matrices_checked": 64.0
+        },
+        "backbone_bond": {
+          "mean_angstrom": 4.244607769536771,
+          "std_angstrom": 0.6819597186404214,
+          "fraction_plausible": 0.5015500992063492
+        }
+      },
+      "distribution": {
+        "distance_histogram": {
+          "js_divergence": 0.006852860720289036,
+          "wasserstein_angstrom": 0.39472298489791685,
+          "generated_mean_angstrom": 17.915478538108598,
+          "real_mean_angstrom": 18.138394297268913
+        },
+        "contact_density": {
+          "generated_mean": 0.029704394360023378,
+          "generated_std": 0.021953842568459597,
+          "real_mean": 0.032441373930906715,
+          "real_std": 0.018039363515072918,
+          "wasserstein": 0.005196997755205307,
+          "generated_undefined_fraction": 0.0
+        },
+        "relative_contact_order": {
+          "generated_mean": 0.285389675523944,
+          "generated_std": 0.11120751705084175,
+          "real_mean": 0.31135894157963345,
+          "real_std": 0.11323947691784346,
+          "wasserstein": 0.026661246130530322,
+          "generated_undefined_fraction": 0.005859375
+        },
+        "radius_of_gyration": {
+          "generated_mean": 13.787635739776047,
+          "generated_std": 2.0677797277207355,
+          "real_mean": 14.042485853361553,
+          "real_std": 2.426373563140735,
+          "wasserstein": 0.28047255817750755,
+          "generated_undefined_fraction": 0.0
+        }
+      },
+      "embedding": {
+        "matrices_embedded": 512.0,
+        "stress1_mean": 0.12183853926636137,
+        "stress1_median": 0.12175881279220865,
+        "negative_eigenvalue_mass_mean": 0.19451047909649521,
+        "negative_eigenvalue_mass_median": 0.1961267232959189,
+        "top_dim_variance_ratio_mean": 0.7491646265068255,
+        "top_dim_variance_ratio_median": 0.7508781436970838,
+        "reconstruction_rmse_angstrom_mean": 2.3229787735475953,
+        "reconstruction_rmse_angstrom_median": 2.2838418371124334,
+        "bond_mean_angstrom_mean": 3.0299456801286304,
+        "bond_mean_angstrom_median": 3.0306109645785924,
+        "bond_std_angstrom_mean": 0.9720316609427695,
+        "bond_std_angstrom_median": 0.9622243106859002,
+        "bond_fraction_plausible_mean": 0.30056423611111105,
+        "bond_fraction_plausible_median": 0.30158730158730157
+      },
+      "nearest": {
+        "nn_rmse_mean_angstrom": 5.276284096630173,
+        "nn_rmse_median_angstrom": 5.212347438334393,
+        "nn_rmse_min_angstrom": 3.3734518620394383,
+        "self_diversity_rmse_angstrom": 9.685779671939368,
+        "coverage": 0.85546875,
+        "distinct_neighbours": 438.0
+      }
+    },
+    "dcgan_symmetrized": {
+      "count": 512,
+      "validity": {
+        "symmetry": {
+          "mean_abs_asymmetry_angstrom": 0.0,
+          "max_abs_asymmetry_angstrom": 0.0,
+          "relative_asymmetry": 0.0
+        },
+        "diagonal": {
+          "mean_abs_diagonal_angstrom": 0.0,
+          "max_abs_diagonal_angstrom": 0.0
+        },
+        "triangle": {
+          "violation_rate": 0.019319772720336914,
+          "mean_excess_angstrom": 2.237041056874065,
+          "max_excess_angstrom": 18.913726806640625,
+          "matrices_checked": 64.0
+        },
+        "backbone_bond": {
+          "mean_angstrom": 4.249008134173762,
+          "std_angstrom": 0.5551668749883968,
+          "fraction_plausible": 0.5336061507936508
+        }
+      },
+      "distribution": {
+        "distance_histogram": {
+          "js_divergence": 0.0062999033123137815,
+          "wasserstein_angstrom": 0.5110159924966253,
+          "generated_mean_angstrom": 17.915478538108598,
+          "real_mean_angstrom": 18.138394297268913
+        },
+        "contact_density": {
+          "generated_mean": 0.023472886835184104,
+          "generated_std": 0.018694013115140996,
+          "real_mean": 0.032441373930906715,
+          "real_std": 0.018039363515072918,
+          "wasserstein": 0.009620376231106825,
+          "generated_undefined_fraction": 0.0
+        },
+        "relative_contact_order": {
+          "generated_mean": 0.2577756050986701,
+          "generated_std": 0.09708678818715692,
+          "real_mean": 0.31135894157963345,
+          "real_std": 0.11323947691784346,
+          "wasserstein": 0.053590393224566185,
+          "generated_undefined_fraction": 0.0078125
+        },
+        "radius_of_gyration": {
+          "generated_mean": 13.743366468872534,
+          "generated_std": 2.070666713707362,
+          "real_mean": 14.042485853361553,
+          "real_std": 2.426373563140735,
+          "wasserstein": 0.3124418388007573,
+          "generated_undefined_fraction": 0.0
+        }
+      },
+      "embedding": {
+        "matrices_embedded": 512.0,
+        "stress1_mean": 0.12183853926636137,
+        "stress1_median": 0.12175881279220865,
+        "negative_eigenvalue_mass_mean": 0.19451047909649521,
+        "negative_eigenvalue_mass_median": 0.1961267232959189,
+        "top_dim_variance_ratio_mean": 0.7491646265068255,
+        "top_dim_variance_ratio_median": 0.7508781436970838,
+        "reconstruction_rmse_angstrom_mean": 2.3229787735475953,
+        "reconstruction_rmse_angstrom_median": 2.2838418371124334,
+        "bond_mean_angstrom_mean": 3.0299456801286304,
+        "bond_mean_angstrom_median": 3.0306109645785924,
+        "bond_std_angstrom_mean": 0.9720316609427695,
+        "bond_std_angstrom_median": 0.9622243106859002,
+        "bond_fraction_plausible_mean": 0.30056423611111105,
+        "bond_fraction_plausible_median": 0.30158730158730157
+      },
+      "nearest": {
+        "nn_rmse_mean_angstrom": 5.043551416946087,
+        "nn_rmse_median_angstrom": 4.986649404102485,
+        "nn_rmse_min_angstrom": 2.877872592458993,
+        "self_diversity_rmse_angstrom": 9.429464255471016,
+        "coverage": 0.85546875,
+        "distinct_neighbours": 438.0
+      }
+    },
+    "real_held_out": {
+      "count": 1043,
+      "validity": {
+        "symmetry": {
+          "mean_abs_asymmetry_angstrom": 0.0,
+          "max_abs_asymmetry_angstrom": 0.0,
+          "relative_asymmetry": 0.0
+        },
+        "diagonal": {
+          "mean_abs_diagonal_angstrom": 0.0,
+          "max_abs_diagonal_angstrom": 0.0
+        },
+        "triangle": {
+          "violation_rate": 0.0,
+          "mean_excess_angstrom": 0.0,
+          "max_excess_angstrom": 0.0,
+          "matrices_checked": 64.0
+        },
+        "backbone_bond": {
+          "mean_angstrom": 3.8068631725699955,
+          "std_angstrom": 0.05881301160446415,
+          "fraction_plausible": 0.9965605929172564
+        }
+      },
+      "distribution": {
+        "distance_histogram": {
+          "js_divergence": 0.0,
+          "wasserstein_angstrom": 0.0,
+          "generated_mean_angstrom": 18.138394297268913,
+          "real_mean_angstrom": 18.138394297268913
+        },
+        "contact_density": {
+          "generated_mean": 0.032441373930906715,
+          "generated_std": 0.018039363515072918,
+          "real_mean": 0.032441373930906715,
+          "real_std": 0.018039363515072918,
+          "wasserstein": 0.0,
+          "generated_undefined_fraction": 0.0
+        },
+        "relative_contact_order": {
+          "generated_mean": 0.31135894157963345,
+          "generated_std": 0.11323947691784346,
+          "real_mean": 0.31135894157963345,
+          "real_std": 0.11323947691784346,
+          "wasserstein": 0.0,
+          "generated_undefined_fraction": 0.009587727708533078
+        },
+        "radius_of_gyration": {
+          "generated_mean": 14.042485853361553,
+          "generated_std": 2.426373563140735,
+          "real_mean": 14.042485853361553,
+          "real_std": 2.426373563140735,
+          "wasserstein": 0.0,
+          "generated_undefined_fraction": 0.0
+        }
+      },
+      "embedding": {
+        "matrices_embedded": 512.0,
+        "stress1_mean": 0.0023753452281852485,
+        "stress1_median": 4.1592534256173744e-08,
+        "negative_eigenvalue_mass_mean": 0.003283885747090782,
+        "negative_eigenvalue_mass_median": 2.697126719583235e-07,
+        "top_dim_variance_ratio_mean": 0.996661584508367,
+        "top_dim_variance_ratio_median": 0.999999729942924,
+        "reconstruction_rmse_angstrom_mean": 0.06441743842008674,
+        "reconstruction_rmse_angstrom_median": 7.946378034852688e-07,
+        "bond_mean_angstrom_mean": 3.78924408671954,
+        "bond_mean_angstrom_median": 3.8045871176845614,
+        "bond_std_angstrom_mean": 0.08525612079641645,
+        "bond_std_angstrom_median": 0.025032637270570347,
+        "bond_fraction_plausible_mean": 0.9762834821428572,
+        "bond_fraction_plausible_median": 1.0
+      },
+      "nearest": {
+        "nn_rmse_mean_angstrom": 4.6860057231342624,
+        "nn_rmse_median_angstrom": 4.891085656625262,
+        "nn_rmse_min_angstrom": 0.21522536496899264,
+        "self_diversity_rmse_angstrom": 9.8454059531356,
+        "coverage": 0.5493767976989453,
+        "distinct_neighbours": 573.0
+      }
+    },
+    "baseline_gaussian": {
+      "count": 512,
+      "validity": {
+        "symmetry": {
+          "mean_abs_asymmetry_angstrom": 10.184903728565793,
+          "max_abs_asymmetry_angstrom": 50.0,
+          "relative_asymmetry": 0.5670915491002058
+        },
+        "diagonal": {
+          "mean_abs_diagonal_angstrom": 17.86144017210094,
+          "max_abs_diagonal_angstrom": 50.0
+        },
+        "triangle": {
+          "violation_rate": 0.12456947565078735,
+          "mean_excess_angstrom": 7.660461168490968,
+          "max_excess_angstrom": 50.0,
+          "matrices_checked": 64.0
+        },
+        "backbone_bond": {
+          "mean_angstrom": 17.944820194705816,
+          "std_angstrom": 9.117057634990966,
+          "fraction_plausible": 0.013020833333333334
+        }
+      },
+      "distribution": {
+        "distance_histogram": {
+          "js_divergence": 0.04404285117536437,
+          "wasserstein_angstrom": 1.0132812490110452,
+          "generated_mean_angstrom": 17.961456075639,
+          "real_mean_angstrom": 18.138394297268913
+        },
+        "contact_density": {
+          "generated_mean": 0.14549011908240794,
+          "generated_std": 0.008543797492218282,
+          "real_mean": 0.032441373930906715,
+          "real_std": 0.018039363515072918,
+          "wasserstein": 0.11304874515150123,
+          "generated_undefined_fraction": 0.0
+        },
+        "relative_contact_order": {
+          "generated_mean": 0.3913790173583459,
+          "generated_std": 0.012854688706075187,
+          "real_mean": 0.31135894157963345,
+          "real_std": 0.11323947691784346,
+          "wasserstein": 0.10889243472641039,
+          "generated_undefined_fraction": 0.0
+        },
+        "radius_of_gyration": {
+          "generated_mean": 14.240260873169763,
+          "generated_std": 0.1000758856011856,
+          "real_mean": 14.042485853361553,
+          "real_std": 2.426373563140735,
+          "wasserstein": 1.8123635857533134,
+          "generated_undefined_fraction": 0.0
+        }
+      },
+      "embedding": {
+        "matrices_embedded": 512.0,
+        "stress1_mean": 0.4690311679214155,
+        "stress1_median": 0.46819083361579006,
+        "negative_eigenvalue_mass_mean": 0.38869158509273166,
+        "negative_eigenvalue_mass_median": 0.3888161594939138,
+        "top_dim_variance_ratio_mean": 0.18038639071317664,
+        "top_dim_variance_ratio_median": 0.1803156176047276,
+        "reconstruction_rmse_angstrom_mean": 8.94969015292463,
+        "reconstruction_rmse_angstrom_median": 8.948401550835147,
+        "bond_mean_angstrom_mean": 12.394113603796443,
+        "bond_mean_angstrom_median": 12.419431410803432,
+        "bond_std_angstrom_mean": 5.079148102339597,
+        "bond_std_angstrom_median": 5.044316587673215,
+        "bond_fraction_plausible_mean": 0.021019345238095236,
+        "bond_fraction_plausible_median": 0.015873015873015872
+      },
+      "nearest": {
+        "nn_rmse_mean_angstrom": 11.22332316976847,
+        "nn_rmse_median_angstrom": 11.216227817591156,
+        "nn_rmse_min_angstrom": 10.870398167204497,
+        "self_diversity_rmse_angstrom": 12.897369427751597,
+        "coverage": 0.08984375,
+        "distinct_neighbours": 46.0
+      }
+    },
+    "baseline_shuffled_distances": {
+      "count": 512,
+      "validity": {
+        "symmetry": {
+          "mean_abs_asymmetry_angstrom": 0.0,
+          "max_abs_asymmetry_angstrom": 0.0,
+          "relative_asymmetry": 0.0
+        },
+        "diagonal": {
+          "mean_abs_diagonal_angstrom": 0.0,
+          "max_abs_diagonal_angstrom": 0.0
+        },
+        "triangle": {
+          "violation_rate": 0.0956646203994751,
+          "mean_excess_angstrom": 6.4829566996555155,
+          "max_excess_angstrom": 42.50894498825073,
+          "matrices_checked": 64.0
+        },
+        "backbone_bond": {
+          "mean_angstrom": 18.118851267052666,
+          "std_angstrom": 9.181286869010252,
+          "fraction_plausible": 0.031187996031746032
+        }
+      },
+      "distribution": {
+        "distance_histogram": {
+          "js_divergence": 1.8661379060275332e-05,
+          "wasserstein_angstrom": 0.02772467321226239,
+          "generated_mean_angstrom": 18.118057918363196,
+          "real_mean_angstrom": 18.138394297268913
+        },
+        "contact_density": {
+          "generated_mean": 0.12125812755698423,
+          "generated_std": 0.012611371572607343,
+          "real_mean": 0.032441373930906715,
+          "real_std": 0.018039363515072918,
+          "wasserstein": 0.08881675362607751,
+          "generated_undefined_fraction": 0.0
+        },
+        "relative_contact_order": {
+          "generated_mean": 0.3904233569616069,
+          "generated_std": 0.01433253060044086,
+          "real_mean": 0.31135894157963345,
+          "real_std": 0.11323947691784346,
+          "wasserstein": 0.10729512356075074,
+          "generated_undefined_fraction": 0.0
+        },
+        "radius_of_gyration": {
+          "generated_mean": 14.026122443517103,
+          "generated_std": 2.437704121653537,
+          "real_mean": 14.042485853361553,
+          "real_std": 2.426373563140735,
+          "wasserstein": 0.09330943218102061,
+          "generated_undefined_fraction": 0.0
+        }
+      },
+      "embedding": {
+        "matrices_embedded": 512.0,
+        "stress1_mean": 0.47458275303366226,
+        "stress1_median": 0.4729290420148706,
+        "negative_eigenvalue_mass_mean": 0.4101825916916745,
+        "negative_eigenvalue_mass_median": 0.409885728953349,
+        "top_dim_variance_ratio_mean": 0.18398797566544212,
+        "top_dim_variance_ratio_median": 0.18379000985884308,
+        "reconstruction_rmse_angstrom_mean": 9.518107050621094,
+        "reconstruction_rmse_angstrom_median": 9.013863490081196,
+        "bond_mean_angstrom_mean": 14.476989656634622,
+        "bond_mean_angstrom_median": 13.783209418319982,
+        "bond_std_angstrom_mean": 5.812153590238665,
+        "bond_std_angstrom_median": 5.57978766179447,
+        "bond_fraction_plausible_mean": 0.016462053571428572,
+        "bond_fraction_plausible_median": 0.015873015873015872
+      },
+      "nearest": {
+        "nn_rmse_mean_angstrom": 10.39262061487956,
+        "nn_rmse_median_angstrom": 9.662775950657911,
+        "nn_rmse_min_angstrom": 7.274150620257214,
+        "self_diversity_rmse_angstrom": 12.512395310120759,
+        "coverage": 0.16796875,
+        "distinct_neighbours": 86.0
+      }
+    },
+    "baseline_residue_permuted": {
+      "count": 512,
+      "validity": {
+        "symmetry": {
+          "mean_abs_asymmetry_angstrom": 0.0,
+          "max_abs_asymmetry_angstrom": 0.0,
+          "relative_asymmetry": 0.0
+        },
+        "diagonal": {
+          "mean_abs_diagonal_angstrom": 0.0,
+          "max_abs_diagonal_angstrom": 0.0
+        },
+        "triangle": {
+          "violation_rate": 0.0,
+          "mean_excess_angstrom": 0.0,
+          "max_excess_angstrom": 0.0,
+          "matrices_checked": 64.0
+        },
+        "backbone_bond": {
+          "mean_angstrom": 18.107650538233834,
+          "std_angstrom": 9.092005863814915,
+          "fraction_plausible": 0.031281001984126984
+        }
+      },
+      "distribution": {
+        "distance_histogram": {
+          "js_divergence": 1.8661379060275332e-05,
+          "wasserstein_angstrom": 0.02772467321226239,
+          "generated_mean_angstrom": 18.118057918363196,
+          "real_mean_angstrom": 18.138394297268913
+        },
+        "contact_density": {
+          "generated_mean": 0.12133460878141437,
+          "generated_std": 0.012408741870479918,
+          "real_mean": 0.032441373930906715,
+          "real_std": 0.018039363515072918,
+          "wasserstein": 0.08889323485050767,
+          "generated_undefined_fraction": 0.0
+        },
+        "relative_contact_order": {
+          "generated_mean": 0.3909824542682418,
+          "generated_std": 0.0142358230025997,
+          "real_mean": 0.31135894157963345,
+          "real_std": 0.11323947691784346,
+          "wasserstein": 0.10810002438891192,
+          "generated_undefined_fraction": 0.0
+        },
+        "radius_of_gyration": {
+          "generated_mean": 14.026122443517105,
+          "generated_std": 2.437704121653537,
+          "real_mean": 14.042485853361553,
+          "real_std": 2.426373563140735,
+          "wasserstein": 0.09330943218102065,
+          "generated_undefined_fraction": 0.0
+        }
+      },
+      "embedding": {
+        "matrices_embedded": 512.0,
+        "stress1_mean": 0.0037262852093981266,
+        "stress1_median": 4.166869612856878e-08,
+        "negative_eigenvalue_mass_mean": 0.005336150210987318,
+        "negative_eigenvalue_mass_median": 2.7014699693077304e-07,
+        "top_dim_variance_ratio_mean": 0.9955394384880154,
+        "top_dim_variance_ratio_median": 0.9999997300214803,
+        "reconstruction_rmse_angstrom_mean": 0.10869126799255988,
+        "reconstruction_rmse_angstrom_median": 7.943378469926828e-07,
+        "bond_mean_angstrom_mean": 18.14007606095692,
+        "bond_mean_angstrom_median": 17.450961100186092,
+        "bond_std_angstrom_mean": 8.32758123260449,
+        "bond_std_angstrom_median": 7.842135999128327,
+        "bond_fraction_plausible_mean": 0.03069196428571428,
+        "bond_fraction_plausible_median": 0.031746031746031744
+      },
+      "nearest": {
+        "nn_rmse_mean_angstrom": 10.282086247834531,
+        "nn_rmse_median_angstrom": 9.594874916860633,
+        "nn_rmse_min_angstrom": 7.240586553227549,
+        "self_diversity_rmse_angstrom": 12.510396428844922,
+        "coverage": 0.373046875,
+        "distinct_neighbours": 191.0
+      }
+    }
+  }
+}

@@ -25,6 +25,6 @@ data/generated/
 # Training artefacts
 runs/
 checkpoints/
-reports/
+# reports/ is committed: it is the evaluation the README reports.
 *.pth
 *.pt
