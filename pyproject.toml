@@ -1,0 +1,47 @@
+[project]
+name = "folduzz"
+version = "0.2.0"
+description = "Experimental DCGAN over residue-residue distance matrices derived from PDB structures"
+readme = "README.md"
+requires-python = ">=3.11,<3.14"
+license = { text = "MIT" }
+authors = [{ name = "k8rthik" }]
+dependencies = [
+    "biopython==1.85",
+    "numpy==2.2.6",
+    "scipy==1.15.3",
+    "torch==2.8.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest==8.4.1",
+    "pytest-cov==6.2.1",
+    "ruff==0.12.5",
+]
+
+[project.scripts]
+folduzz = "folduzz.cli:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/folduzz"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+filterwarnings = ["ignore::DeprecationWarning"]
+
+[tool.coverage.run]
+source = ["src/folduzz"]
+omit = ["src/folduzz/train.py"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
