@@ -319,7 +319,7 @@ src/folduzz/
     embedding.py     classical MDS, stress-1, eigenvalue mass
     nearest.py       nearest-neighbour RMSE, diversity, coverage
     baselines.py     Gaussian, shuffled, residue-permuted controls
-tests/               329 tests, 94% statement coverage (training loop excluded)
+tests/               329 tests, 95% statement coverage (training loop excluded)
 data/fixtures/       six real PDB files so everything runs without a download
 reports/             the evaluation reported above
 ```
