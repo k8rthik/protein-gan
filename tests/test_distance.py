@@ -102,7 +102,8 @@ class TestNormalize:
         np.testing.assert_allclose(restored, matrix, atol=1e-6)
 
     def test_maps_zero_to_minus_one_and_max_to_plus_one(self):
-        matrix = np.array([[0.0, config.MAX_DISTANCE_ANGSTROM], [config.MAX_DISTANCE_ANGSTROM, 0.0]])
+        top = config.MAX_DISTANCE_ANGSTROM
+        matrix = np.array([[0.0, top], [top, 0.0]])
         scaled = normalize(matrix)
         assert scaled[0, 0] == pytest.approx(-1.0)
         assert scaled[0, 1] == pytest.approx(1.0)

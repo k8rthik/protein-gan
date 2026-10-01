@@ -116,8 +116,9 @@ def embed_one(
 
     bonds = np.diagonal(embedded, offset=1)
     offdiag_count = symmetric.size - symmetric.shape[0]
+    offdiag_mask = ~np.eye(symmetric.shape[0], dtype=bool)
     rmse = (
-        float(np.sqrt(np.square(residual)[~np.eye(symmetric.shape[0], dtype=bool)].sum() / offdiag_count))
+        float(np.sqrt(np.square(residual)[offdiag_mask].sum() / offdiag_count))
         if offdiag_count
         else 0.0
     )
