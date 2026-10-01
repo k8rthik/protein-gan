@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+from dataclasses import FrozenInstanceError
+
 import numpy as np
 import pytest
 
@@ -94,7 +96,7 @@ class TestEmbedOne:
 
     def test_results_are_immutable(self):
         result = embed_one(matrix_of(helix(10)))
-        with pytest.raises(Exception):
+        with pytest.raises(FrozenInstanceError):
             result.stress1 = 0.0  # type: ignore[misc]
 
 

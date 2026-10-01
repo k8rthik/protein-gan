@@ -121,7 +121,8 @@ class TestPreprocessDirectory:
 
     def test_unreadable_file_is_skipped_not_fatal(self, raw_dir, tmp_path):
         (raw_dir / "4jkl.pdb").write_text("this is not a pdb file\n")
-        report = preprocess_directory(raw_dir, tmp_path / "out", PreprocessOptions(val_fraction=0.0))
+        options = PreprocessOptions(val_fraction=0.0)
+        report = preprocess_directory(raw_dir, tmp_path / "out", options)
         assert report.structures_skipped == 2
         assert report.window_count > 0
 

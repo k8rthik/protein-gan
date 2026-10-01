@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+from dataclasses import FrozenInstanceError
+
 import pytest
 
 from folduzz import config
@@ -211,5 +213,5 @@ class TestHttpGetRetries:
 class TestFetchResult:
     def test_is_frozen(self):
         result = FetchResult(pdb_id="1ABC", path=None, status="failed", message="x")
-        with pytest.raises(Exception):
+        with pytest.raises(FrozenInstanceError):
             result.status = "downloaded"  # type: ignore[misc]
