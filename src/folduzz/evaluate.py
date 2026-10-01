@@ -22,6 +22,7 @@ from folduzz.errors import InvalidInputError
 from folduzz.generate import SIDECAR_SUFFIX
 from folduzz.metrics.baselines import build_baselines
 from folduzz.metrics.embedding import embedding_report
+from folduzz.metrics.nearest import nearest_neighbour_report
 from folduzz.metrics.stats import distribution_report
 from folduzz.metrics.validity import validity_report
 
@@ -74,17 +75,25 @@ def load_samples(path: Path | str) -> np.ndarray:
 def evaluate_sources(
     sources: dict[str, np.ndarray],
     real: np.ndarray,
+    train: np.ndarray | None = None,
     embed_count: int = 128,
+    seed: int = 0,
 ) -> dict[str, dict[str, Any]]:
-    """Run every metric family over every source. All inputs in angstroms."""
+    """Run every metric family over every source. All inputs in angstroms.
+
+    `train` is the memorisation reference: nearest-neighbour distances are
+    measured against the matrices the model was actually fitted on.
+    """
     if not sources:
         raise InvalidInputError("no sources to evaluate")
+    reference = real if train is None else train
     return {
         name: {
             "count": int(matrices.shape[0]),
             "validity": validity_report(matrices),
             "distribution": distribution_report(matrices, real),
             "embedding": embedding_report(matrices, max_count=embed_count),
+            "nearest": nearest_neighbour_report(matrices, reference, seed=seed),
         }
         for name, matrices in sources.items()
     }
@@ -113,6 +122,11 @@ def evaluate(
 
     generated = denormalize(generated_normalized, max_distance=max_distance).astype(np.float64)
     real = denormalize(real_normalized, max_distance=max_distance).astype(np.float64)
+    # Memorisation is measured against the split the model was fitted on.
+    train_split = "train" if split != "train" else "val"
+    train = denormalize(
+        load_split(data_dir, train_split), max_distance=max_distance
+    ).astype(np.float64)
 
     sources: dict[str, np.ndarray] = {
         RAW_SOURCE: generated,
@@ -135,7 +149,10 @@ def evaluate(
         "embed_count": embed_count,
         "contact_threshold_angstrom": config.CONTACT_THRESHOLD_ANGSTROM,
         "triangle_tolerance_angstrom": config.TRIANGLE_TOLERANCE_ANGSTROM,
-        "sources": evaluate_sources(sources, real, embed_count=embed_count),
+        "nn_reference_split": train_split,
+        "sources": evaluate_sources(
+            sources, real, train=train, embed_count=embed_count, seed=seed
+        ),
     }
 
 
@@ -153,6 +170,9 @@ _COLUMNS: tuple[tuple[str, str, str], ...] = (
     ("MDS stress-1", "embedding.stress1_mean", "{:.3f}"),
     ("neg eig mass", "embedding.negative_eigenvalue_mass_mean", "{:.3f}"),
     ("3D bond ok %", "embedding.bond_fraction_plausible_mean", "{:.1%}"),
+    ("NN RMSE (A)", "nearest.nn_rmse_mean_angstrom", "{:.2f}"),
+    ("self div (A)", "nearest.self_diversity_rmse_angstrom", "{:.2f}"),
+    ("coverage", "nearest.coverage", "{:.2f}"),
 )
 
 
@@ -171,7 +191,9 @@ def to_markdown(results: dict[str, Any]) -> str:
     lines = [
         f"Matrices: {results['matrix_size']}x{results['matrix_size']}, "
         f"clip {results['max_distance_angstrom']:.0f} A, split `{results['split']}` "
-        f"({results['real_count']} real windows), {results['generated_count']} generated.",
+        f"({results['real_count']} real windows), {results['generated_count']} generated. "
+        f"NN RMSE and coverage are against the `{results.get('nn_reference_split', 'train')}` "
+        f"split.",
         "",
         header,
         divider,
