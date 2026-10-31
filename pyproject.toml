@@ -9,7 +9,7 @@ authors = [{ name = "k8rthik" }]
 dependencies = [
     "biopython==1.85",
     "numpy==2.2.6",
-    "scipy==1.15.3",
+    "scipy>=1.16",
     "torch==2.8.0",
 ]
 
